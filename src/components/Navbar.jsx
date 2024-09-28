@@ -2,20 +2,19 @@ import React, { useEffect, useState } from "react";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../utils/firebase";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'; // Import the AccountCircle icon
-import '../styles/navbar.css'; // Import the CSS file
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import '../styles/navbar.css';
+import logo from '../assets/logo.jpeg'; // Import the logo image
 
 const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  // Track the authentication state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsLoggedIn(!!user); // Set to true if user is logged in, false otherwise
+      setIsLoggedIn(!!user);
     });
-
-    return () => unsubscribe(); // Cleanup the subscription on unmount
+    return () => unsubscribe();
   }, []);
 
   const handleLogout = async () => {
@@ -32,10 +31,10 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar-container"> {/* Container for centering */}
+    <div className="navbar-container">
       <nav className="navbar">
         <div className="logo">
-          <h1>MyApp</h1>
+          <img src={logo} alt="Logo" className="logo-image" /> {/* Replace text with logo */}
         </div>
         <div className="nav-links">
           <Link to="/">Home</Link>
@@ -46,9 +45,8 @@ const Navbar = () => {
           <Link to="/class">Class</Link>
         </div>
         <div className="user-icon">
-          <AccountCircleIcon fontSize="large" onClick={handleLogout} /> {/* Use the AccountCircle icon */}
+          <AccountCircleIcon fontSize="large" onClick={handleLogout} />
         </div>
-        {/* Toggle between Logout and Login buttons */}
         <button onClick={handleLogout}>
           {isLoggedIn ? "Logout" : "Login"}
         </button>

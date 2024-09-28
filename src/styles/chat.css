@@ -1,0 +1,145 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #e3f2fd; /* Light blue background for the entire page */
+  }
+  
+  /* Chat Container */
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 600px; /* Limit the width of the chat container */
+    margin: auto; /* Center the chat container */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* White background for better contrast */
+  }
+  
+  /* Title Styles */
+  .chat-title {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    font-weight: 600; /* Make the title bold */
+  }
+  
+  /* Messages Paper */
+  .messages-paper {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fafafa; /* Slightly off-white for messages */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Message Item Styles */
+  .message-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #e3f2fd; /* Light blue background for messages */
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform for animation */
+  }
+  
+  .message-item:hover {
+    background-color: #bbdefb; /* Darker blue on hover for messages */
+    transform: scale(1.02); /* Slight scale up on hover */
+  }
+  
+  /* Avatar Styles */
+  .message-avatar {
+    margin-right: 10px;
+    background-color: #2196f3; /* Avatar color */
+    color: white; /* Avatar text color */
+  }
+  
+  /* Message Form Styles */
+  .message-form {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  /* Input Field Styles */
+  .message-input {
+    margin-right: 10px;
+    border-radius: 4px;
+  }
+  
+  /* Send Button Styles */
+  .send-button {
+    background-color: #2196f3; /* Blue color */
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform for animation */
+  }
+  
+  .send-button:hover {
+    background-color: #1976d2; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+  }
+  
+  /* Login Button Styles */
+  .login-button {
+    margin-top: 10px;
+    background-color: #4caf50; /* Green color */
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform for animation */
+  }
+  
+  .login-button:hover {
+    background-color: #388e3c; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 600px) {
+    .chat-container {
+      padding: 10px; /* Less padding on smaller screens */
+    }
+  
+    .message-form {
+      flex-direction: column;
+    }
+  
+    .message-input {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    .send-button {
+      width: 100%; /* Full width for send button on small screens */
+    }
+  }
+  
+  /* Additional Styles for Empty State */
+  .empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #aaa; /* Light gray for empty state text */
+    font-style: italic; /* Italicize the text */
+  }
+  
+  /* Scrollbar Styles */
+  .messages-paper::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+  
+  .messages-paper::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+  }
+  
+  .messages-paper::-webkit-scrollbar-thumb:hover {
+    background-color: #bbb; /* Darker on hover */
+  }
+  

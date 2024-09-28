@@ -12,7 +12,12 @@
   padding: 0 20px; /* Added padding for spacing */
   height: 80px; /* Increased height for better visibility */
 }
-
+/* Add styling for the logo image */
+.logo-image {
+  width: 50px; /* Adjust the size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  cursor: pointer;
+}
 /* Styling for the navbar itself */
 .navbar {
   width: 100%;
