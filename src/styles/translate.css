@@ -1,0 +1,73 @@
+.translate-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #1e1e1e; /* Dark background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow */
+  }
+  
+  .translated-result p {
+    color: #ffffff; /* Light text color */
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #333333; /* Darker border */
+    background-color: #2b2b2b; /* Darker textarea background */
+    color: #ffffff; /* Light text */
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .field {
+    margin: 10px;
+    flex: 1 1 45%;
+  }
+  
+  select {
+    padding: 10px;
+    border: 1px solid #444444; /* Darker border for select */
+    background-color: #2b2b2b; /* Dark background */
+    color: #ffffff; /* Light text */
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4caf50; /* Keeping the button color green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .error {
+    color: #ff6b6b; /* Slightly softer red for errors */
+    margin-top: 10px;
+  }
+  
+  .translated-result {
+    margin-top: 20px;
+  }
+  
+  .translated-result h2 {
+    margin-bottom: 10px;
+    color: #ffffff; /* Light text */
+  }
+  

@@ -1,0 +1,91 @@
+/* Background with image */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('../assets/bg.jpeg') no-repeat center center/cover; /* Use the same background image */
+  position: relative;
+}
+
+/* Glass effect card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  backdrop-filter: blur(10px); /* Background blur for glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari support */
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Input fields */
+input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7); /* Semi-transparent input background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ff9900;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #ff8800;
+}
+
+/* Google button */
+.google-btn {
+  background-color: #4285f4;
+  color: white;
+}
+
+.google-btn:hover {
+  background-color: #357ae8;
+}
+
+p {
+  margin-top: 15px;
+  color: white;
+}
+
+a {
+  color: #ff9900;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+/* Add this to your signup.css */
+select {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+

@@ -1,0 +1,126 @@
+/* Full-width navbar with centered content */
+.navbar-container {
+  width: 100%;
+  background-color: #ffffff; /* White background */
+  position: fixed; /* Stick to the top */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for elegance */
+  display: flex;
+  justify-content: center; /* Center the navbar contents */
+  padding: 0 20px; /* Added padding for spacing */
+  height: 80px; /* Increased height for better visibility */
+}
+
+/* Styling for the navbar itself */
+.navbar {
+  width: 100%;
+  max-width: 1200px; /* Constrain the width for larger screens */
+  display: flex;
+  justify-content: space-between; /* Space between logo and links */
+  align-items: center;
+  padding: 0 30px; /* Padding inside the navbar */
+  background-color: transparent; /* Transparent to show the container background */
+}
+
+/* Logo Styling */
+.logo h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  color: #2c2c2c; /* Cool black color for logo */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.logo h1:hover {
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Container for links and user-related items */
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Space between links and user elements */
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 30px; /* Space between each link */
+}
+
+.nav-links a {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2c2c2c; /* Cool black color for links */
+  text-decoration: none;
+  padding: 8px 16px; /* Padding for clickable area */
+  border-radius: 5px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: rgba(93, 122, 245, 0.1); /* Light hover effect */
+  color: #5D7AF5; /* Hover color */
+}
+
+/* User Icon */
+.user-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #2c2c2c; /* Cool black color for icon */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.user-icon:hover {
+  transform: scale(1.1); /* Slightly larger on hover */
+  color: #5D7AF5; /* Hover color */
+}
+
+/* Button Styling for Login/Logout */
+.login-logout-button {
+  background-color: crimson; /* Crimson button background */
+  color: white; /* White text for contrast */
+  border: none; /* No border for a clean button look */
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.login-logout-button:hover {
+  background-color: #8b0000; /* Darker crimson on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+.login-logout-button:focus {
+  outline: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px; /* Add padding for spacing */
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .user-icon {
+    margin: 15px 0;
+  }
+
+  .login-logout-button {
+    width: 100%; /* Full width for mobile */
+    margin-top: 10px; /* Margin on top for spacing */
+  }
+}

@@ -1,0 +1,85 @@
+/* homepage.css */
+.home-container {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #121212; /* Dark background */
+  color: #e0e0e0; /* Light text color */
+}
+
+.hero {
+  background-color: #1f1f1f; /* Slightly lighter dark */
+  padding: 60px 20px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Soft shadow */
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.cta-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.cta-button:hover {
+  background-color: #45a049;
+}
+
+.about {
+  padding: 40px 20px;
+  background-color: #1f1f1f; /* Slightly lighter dark */
+  border-radius: 10px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.about h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 1.1rem;
+  color: #ccc; /* Slightly lighter for readability */
+}
+
+.founders {
+  padding: 40px 20px;
+  background-color: #1f1f1f; /* Slightly lighter dark */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.founders h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.founder-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.founder {
+  text-align: center;
+}
+
+.founder img {
+  width: 100px; /* Set image size */
+  height: 100px; /* Set image size */
+  border-radius: 50%; /* Circular profile pictures */
+  margin-bottom: 10px;
+}
