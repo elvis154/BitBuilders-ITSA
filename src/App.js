@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { auth } from './utils/firebase';
 import Navbar from './components/Navbar';
+import Class from './components/Class';
+import Pop from './components/Pop'; // This is likely the line causing the issue
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
@@ -28,6 +30,8 @@ const App = () => {
         <Route path="/chat" element={<ChatApp />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/chatapp" element={<ChatComponent />} />
+        <Route path="/class" element={<Class />} />
+        <Route path="/pop" element={<Pop />} />
         <Route path ="/calendar" element={<Calendar />} />
         <Route path="/translate" element={<Translate />} />
         <Route path="/text2speech" element={<TextToSpeech />} />

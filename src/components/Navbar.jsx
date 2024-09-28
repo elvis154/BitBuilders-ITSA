@@ -43,6 +43,7 @@ const Navbar = () => {
           <Link to="/services">Analysis</Link>
           <Link to="/contact">Review</Link>
           <Link to="/notes">Notes</Link>
+          <Link to="/class">Class</Link>
         </div>
         <div className="user-icon">
           <AccountCircleIcon fontSize="large" onClick={handleLogout} /> {/* Use the AccountCircle icon */}

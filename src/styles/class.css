@@ -1,0 +1,58 @@
+body {
+    margin: 0; /* Remove default margin */
+    background-color: white; /* Set the entire page background to white */
+    height: 100vh; /* Ensure the body covers full height */
+    overflow: hidden; /* Prevent body from scrolling */
+  }
+  
+  .class-container {
+    margin-top: 30px;
+    padding: 2rem;
+    text-align: center;
+    background-color: white; /* Container background */
+    height: 100vh; /* Full viewport height */
+    overflow: auto; /* Enable scrolling within the container */
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #4a90e2;
+    margin-bottom: 1rem;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+  }
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  td {
+    color: #555;
+  }
+  
+  .add-more-btn {
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .add-more-btn:hover {
+    background-color: #357abd;
+  }
+  
