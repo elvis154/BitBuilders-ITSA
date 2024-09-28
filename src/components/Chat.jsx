@@ -1,42 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { auth, provider, db } from '../utils/firebase'; // Path to your firebase configuration
-import {
-  Button,
-  TextField,
-  Typography,
-  Paper,
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Avatar,
-} from '@mui/material';
+import React, { useEffect, useState, useRef } from 'react';
+import { auth, provider, db } from '../utils/firebase';
+import { Button, TextField, Typography, Box, Paper } from '@mui/material';
 import { signInWithPopup, onAuthStateChanged } from 'firebase/auth';
-import { collection, addDoc, onSnapshot } from 'firebase/firestore';
-import '../styles/chat.css'; // Import the CSS file
+import { collection, addDoc, onSnapshot, orderBy, query } from 'firebase/firestore';
+import '../styles/chat.css';
 
 const Chat = () => {
   const [user, setUser] = useState(null);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef(null); // Reference for auto scroll
 
   useEffect(() => {
-    // Check for user authentication state
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
 
-    // Fetch messages from Firestore
     const messagesRef = collection(db, 'messages');
-    const unsubscribeMessages = onSnapshot(messagesRef, (snapshot) => {
+    const q = query(messagesRef, orderBy('createdAt', 'asc'));
+
+    const unsubscribeMessages = onSnapshot(q, (snapshot) => {
       const messagesData = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setMessages(messagesData);
+      scrollToBottom();
     });
 
-    // Cleanup the subscriptions
     return () => {
       unsubscribe();
       unsubscribeMessages();
@@ -49,44 +40,51 @@ const Chat = () => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-    if (message.trim() === '') return; // Prevent sending empty messages
+    if (message.trim() === '' || !user) return;
 
     await addDoc(collection(db, 'messages'), {
       text: message,
       uid: user.uid,
+      userName: user.displayName,
       createdAt: new Date(),
     });
 
-    setMessage(''); // Clear the input field after sending
+    setMessage('');
+  };
+
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
-    <Box className="chat-container">
-      <Typography variant="h4" align="center" className="chat-title">
-        Chat Application
+    <Box className="chat-page">
+      <Typography variant="h4" className="chat-title">
+        Real-Time Chat
       </Typography>
       <Paper elevation={3} className="messages-paper">
-        <List>
+        <div className="messages">
           {messages.map((msg) => (
-            <ListItem key={msg.id} className="message-item">
-              <Avatar className="message-avatar">{msg.uid[0]}</Avatar>
-              <ListItemText
-                primary={msg.text}
-                secondary={`User ID: ${msg.uid}`}
-              />
-            </ListItem>
+            <div
+              key={msg.id}
+              className={`message ${msg.uid === user?.uid ? 'sent' : 'received'}`}
+            >
+              <strong>{msg.userName}</strong>: {msg.text}
+            </div>
           ))}
-        </List>
+          <div ref={messagesEndRef} />
+        </div>
       </Paper>
       {user ? (
-        <Box component="form" onSubmit={handleSendMessage} className="message-form">
+        <Box component="form" onSubmit={handleSendMessage} className="chat-form">
           <TextField
             variant="outlined"
             fullWidth
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Type your message..."
-            className="message-input"
+            className="chat-input"
           />
           <Button variant="contained" type="submit" className="send-button">
             Send
