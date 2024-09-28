@@ -1,91 +1,138 @@
-/* Background with image */
 .signup-container {
+  margin-top: 50px;
+  display: flex;
+  height: 100vh; /* Full height */
+}
+
+.left-side {
+  background-color: white; /* White background */
+  flex: 1; /* Takes half of the container */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: url('../assets/bg.jpeg') no-repeat center center/cover; /* Use the same background image */
-  position: relative;
+  padding: 20px; /* Add some padding */
 }
 
-/* Glass effect card */
+.sign-image {
+  max-width: 90%; /* Responsive width */
+  height: auto;
+}
+
+.right-side {
+  flex: 1; /* Takes half of the container */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  padding: 30px; /* Padding around */
+}
+
 .glass-card {
-  background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  backdrop-filter: blur(10px); /* Background blur for glass effect */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9); /* Example glass effect */
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
   padding: 40px;
-  max-width: 400px;
-  width: 100%;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Full width */
+  max-width: 400px; /* Constrain max width */
 }
 
-/* Input fields */
-input {
-  display: block;
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 10px;
+h2 {
+  margin-bottom: 20px; /* Space below heading */
+  font-size: 24px; /* Larger heading */
+  font-family: 'Arial', sans-serif; /* Professional font */
+  color: #333; /* Dark text */
+}
+
+.login-prompt {
+  margin-top: 20px; /* Space above text */
+  color: black;
+  font-size: 14px; /* Smaller font size */
+}
+
+.login-prompt a {
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.signup-container {
+  display: flex;
+  height: 100vh; /* Full height */
+}
+
+.left-side {
+  background-color: white; /* White background */
+  flex: 1; /* Takes half of the container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Add some padding */
+}
+
+.sign-image {
+  max-width: 90%; /* Responsive width */
+  height: auto;
+}
+
+.right-side {
+  flex: 1; /* Takes half of the container */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  padding: 30px; /* Padding around */
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.9); /* Example glass effect */
+  backdrop-filter: blur(15px);
   border-radius: 10px;
-  border: none;
-  outline: none;
-  background: rgba(255, 255, 255, 0.7); /* Semi-transparent input background */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+  padding: 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Full width */
+  max-width: 400px; /* Constrain max width */
 }
 
-/* Button styling */
-button {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  background-color: #ff9900;
-  color: white;
-  cursor: pointer;
-  margin-top: 10px;
-  font-weight: bold;
+h2 {
+  margin-bottom: 20px; /* Space below heading */
+  font-size: 24px; /* Larger heading */
+  font-family: 'Arial', sans-serif; /* Professional font */
+  color: #333; /* Dark text */
 }
 
-button:hover {
-  background-color: #ff8800;
+.login-prompt {
+  margin-top: 20px; /* Space above text */
+  font-size: 14px; /* Smaller font size */
 }
 
-/* Google button */
+.login-prompt a {
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
 .google-btn {
-  background-color: #4285f4;
-  color: white;
+  margin-top: 20px; /* Space above the button */
+  width: 100%; /* Full width for a modern look */
+  background-color: #fff; /* White background */
+  color: #4285F4; /* Google blue color for text */
+  border: 2px solid #4285F4; /* Google blue border */
+  border-radius: 5px; /* Slightly rounded corners */
+  padding: 12px; /* Increased padding for better touch area */
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease; /* Smooth transition */
+  display: flex; /* Flexbox for center alignment */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  font-weight: bold; /* Bold font for emphasis */
+  text-align: center; /* Center text alignment */
+}
+
+.google-btn .MuiSvgIcon-root {
+  margin-right: 8px; /* Space between icon and text */
+  font-size: 20px; /* Adjust icon size for better alignment */
 }
 
 .google-btn:hover {
-  background-color: #357ae8;
+  background-color: #4285F4; /* Blue background on hover */
+  color: white; /* White text on hover */
+  border: 2px solid transparent; /* Hide the border on hover */
 }
-
-p {
-  margin-top: 15px;
-  color: white;
-}
-
-a {
-  color: #ff9900;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-/* Add this to your signup.css */
-select {
-  display: block;
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-}
-

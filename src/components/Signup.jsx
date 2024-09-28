@@ -4,13 +4,17 @@ import { auth, provider } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../utils/firebase"; // Import Firestore instance
+import { TextField, Button, MenuItem, Select, FormControl, InputLabel } from "@mui/material";
+import { motion } from "framer-motion";
+import { Google } from "@mui/icons-material"; // Import Google icon
+import signImage from '../assets/sign.svg'; // Adjust the path based on your folder structure
 import "../styles/signup.css";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [role, setRole] = useState("Student"); // Add role state for dropdown
+  const [role, setRole] = useState("Student");
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
@@ -19,12 +23,11 @@ const Signup = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Create the user document in Firestore with role
       await setDoc(doc(db, "users", user.uid), {
         name: name,
         email: email,
-        role: role, // Save the selected role (Student/Teacher)
-        isOnline: false, // Initial online status
+        role: role,
+        isOnline: false,
       });
 
       navigate("/dashboard");
@@ -38,11 +41,10 @@ const Signup = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // Create the user document in Firestore with role
       await setDoc(doc(db, "users", user.uid), {
         name: user.displayName || "Unknown",
         email: user.email,
-        role: role, // Save the selected role (Student/Teacher)
+        role: role,
         isOnline: false,
       });
 
@@ -54,52 +56,86 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
-      <div className="glass-card"> {/* Added glass-card for styling */}
+      <motion.div 
+        className="left-side"
+        initial={{ opacity: 0, x: -100 }} 
+        animate={{ opacity: 1, x: 0 }} 
+        transition={{ duration: 0.5 }}
+      >
+        <img src={signImage} alt="Sign Up" className="sign-image" />
+      </motion.div>
+
+      <motion.div 
+        className="right-side glass-card"
+        initial={{ opacity: 0, x: 100 }} 
+        animate={{ opacity: 1, x: 0 }} 
+        transition={{ duration: 0.5 }}
+      >
         <h2>Signup</h2>
         <form onSubmit={handleSignup}>
-          <input
-            type="text"
-            placeholder="Name"
+          <TextField
+            label="Name"
+            variant="outlined"
+            fullWidth
+            margin="normal"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
-          <input
+          <TextField
+            label="Email"
+            variant="outlined"
             type="email"
-            placeholder="Email"
+            fullWidth
+            margin="normal"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <input
+          <TextField
+            label="Password"
+            variant="outlined"
             type="password"
-            placeholder="Password"
+            fullWidth
+            margin="normal"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <FormControl fullWidth margin="normal">
+            <InputLabel>Role</InputLabel>
+            <Select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              label="Role"
+              required
+            >
+              <MenuItem value="Student">Student</MenuItem>
+              <MenuItem value="Teacher">Teacher</MenuItem>
+            </Select>
+          </FormControl>
 
-          {/* Dropdown for selecting role */}
-          <select
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            required
-          >
-            <option value="Student">Student</option>
-            <option value="Teacher">Teacher</option>
-          </select>
-
-          <button type="submit">Signup</button>
+          <Button variant="contained" color="primary" type="submit" fullWidth>
+            Signup
+          </Button>
         </form>
 
-        <button className="google-btn" onClick={handleGoogleSignup}>
+        {/* Google Signup Button with Icon */}
+        <Button
+          variant="outlined"
+          color="inherit"
+          startIcon={<Google />}
+          onClick={handleGoogleSignup}
+          className="google-btn"
+        >
           Signup with Google
-        </button>
-        
-        <p>
+        </Button>
+
+
+        <p className="login-prompt">
           Already have an account? <a href="/login">Login</a>
         </p>
-      </div>
+      </motion.div>
     </div>
   );
 };
