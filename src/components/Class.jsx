@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PopUp from '../components/Pop';
+import { db } from '../utils/firebase'; // Import Firebase Firestore
+import { collection, addDoc, getDocs } from 'firebase/firestore'; // Firestore functions
 import '../styles/class.css';
 
 const Class = () => {
@@ -10,8 +12,23 @@ const Class = () => {
     setIsPopupOpen(!isPopupOpen);
   };
 
-  const addMember = (memberData) => {
+  // Fetch members from Firestore when the component mounts
+  useEffect(() => {
+    const fetchMembers = async () => {
+      const membersCollection = collection(db, 'classMembers');
+      const membersSnapshot = await getDocs(membersCollection);
+      const membersList = membersSnapshot.docs.map((doc) => doc.data());
+      setMembers(membersList);
+    };
+
+    fetchMembers();
+  }, []);
+
+  // Function to add a member
+  const addMember = async (memberData) => {
     if (members.length < 100) {
+      // Add new member to Firestore
+      await addDoc(collection(db, 'classMembers'), memberData);
       setMembers([...members, memberData]);
     } else {
       alert('You have reached the limit of 100 members!');

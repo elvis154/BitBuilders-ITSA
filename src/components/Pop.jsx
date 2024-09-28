@@ -6,32 +6,40 @@ const PopUp = ({ togglePopup, addMember }) => {
   const [studentRollNo, setStudentRollNo] = useState('');
   const [studentName, setStudentName] = useState('');
   const [studentEmail, setStudentEmail] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Add member to class
+    // Create member data
     const memberData = {
       className,
-      studentRollNo,
+      studentRollNo: parseInt(studentRollNo), // Ensure Roll No is a number
       studentName,
       studentEmail,
     };
 
-    addMember(memberData);
-
-    // Clear inputs and close popup
-    setClassName('');
-    setStudentRollNo('');
-    setStudentName('');
-    setStudentEmail('');
-    togglePopup();
+    try {
+      // Add member to class
+      await addMember(memberData);
+      // Clear inputs
+      setClassName('');
+      setStudentRollNo('');
+      setStudentName('');
+      setStudentEmail('');
+      togglePopup();
+    } catch (err) {
+      // Handle error, e.g., show an error message
+      setError('Failed to add member. Please try again.');
+      console.error(err);
+    }
   };
 
   return (
     <div className="popup-container">
       <div className="popup-content">
         <h2>Create a Class</h2>
+        {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
           <label>
             Class Name:
